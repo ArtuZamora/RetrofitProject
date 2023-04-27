@@ -46,6 +46,15 @@
             android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
         </activity>
         <activity
+            android:name=".activities.IniciarSesionActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activities.RegistrarseActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
+        </activity>
+        <activity
             android:name=".activities.SplashActivity"
             android:exported="true">
             <intent-filter>

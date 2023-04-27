@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dsm.retrofitproject.R
+import com.dsm.retrofitproject.activities.singletons.Global
 import com.dsm.retrofitproject.models.Profesor
 import com.dsm.retrofitproject.providers.AlumnoApi
 import com.dsm.retrofitproject.providers.ProfesorApi
@@ -63,7 +64,7 @@ class ActualizarProfesorActivity : AppCompatActivity() {
 
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.58.111:8010/api-rest/")
+            .baseUrl(Global.BaseAPIUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
@@ -114,6 +115,7 @@ class ActualizarProfesorActivity : AppCompatActivity() {
 
                             Toast.makeText(this@ActualizarProfesorActivity, "Profesor actualizado correctamente", Toast.LENGTH_SHORT).show()
                             val i = Intent(getBaseContext(), ProfesoresListaActivity::class.java)
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(i)
                         } else {
 

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dsm.retrofitproject.R
 import com.dsm.retrofitproject.activities.profesor.ActualizarProfesorActivity
 import com.dsm.retrofitproject.activities.profesor.CrearProfesorActivity
+import com.dsm.retrofitproject.activities.singletons.Global
 import com.dsm.retrofitproject.adapters.AlumnoAdapter
 import com.dsm.retrofitproject.adapters.ProfesorAdapter
 import com.dsm.retrofitproject.models.Profesor
@@ -58,7 +59,7 @@ class ProfesoresListaActivity : AppCompatActivity() {
 
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.58.111:8010/api-rest/")
+            .baseUrl(Global.BaseAPIUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

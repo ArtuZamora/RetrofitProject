@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dsm.retrofitproject.R
+import com.dsm.retrofitproject.activities.singletons.Global
 import com.dsm.retrofitproject.adapters.AlumnoAdapter
 import com.dsm.retrofitproject.models.Alumno
 import com.dsm.retrofitproject.providers.AlumnoApi
@@ -55,7 +56,7 @@ class EstudiantesListaActivity : AppCompatActivity() {
 
         // Crea una instancia de Retrofit con el cliente OkHttpClient
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.58.111:8010/api-rest/")
+            .baseUrl(Global.BaseAPIUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dsm.retrofitproject.R
+import com.dsm.retrofitproject.activities.singletons.Global
 import com.dsm.retrofitproject.models.Alumno
 import com.dsm.retrofitproject.providers.AlumnoApi
 import okhttp3.Credentials
@@ -67,7 +68,7 @@ class CrearAlumnoActivity : AppCompatActivity() {
 
             // Crea una instancia de Retrofit con el cliente OkHttpClient
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.58.111:8010/api-rest/")
+                .baseUrl(Global.BaseAPIUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
@@ -80,6 +81,7 @@ class CrearAlumnoActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         Toast.makeText(this@CrearAlumnoActivity, "Alumno creado exitosamente", Toast.LENGTH_SHORT).show()
                         val i = Intent(getBaseContext(), EstudiantesListaActivity::class.java)
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(i)
                     } else {
                         val error = response.errorBody()?.string()
